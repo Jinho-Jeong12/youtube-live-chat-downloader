@@ -2,9 +2,43 @@
 
 ---
 
+## 📥 프로그램 다운로드 (GitHub에서 설치하기)
+
+### 1. GitHub 페이지 접속
+
+아래 링크를 클릭하거나 브라우저 주소창에 붙여넣으세요.
+
+```
+https://github.com/Jinho-Jeong12/youtube-live-chat-downloader
+```
+
+### 2. 파일 전체 다운로드
+
+1. 페이지 오른쪽 위 초록색 **`<> Code`** 버튼 클릭
+2. **`Download ZIP`** 클릭
+3. 다운로드된 ZIP 파일을 원하는 폴더에 **압축 해제**
+
+> **Git이 설치된 경우** 아래 명령어로도 받을 수 있습니다.
+> ```
+> git clone https://github.com/Jinho-Jeong12/youtube-live-chat-downloader.git
+> ```
+
+### 3. 압축 해제 후 폴더 내용 확인
+
+압축을 풀면 아래 파일들이 있어야 합니다.
+
+| 파일 | 설명 |
+|------|------|
+| `download_chat.py` | 유튜브 라이브 채팅 다운로드 프로그램 |
+| `dedup.py` | CSV 중복 제거 유틸리티 |
+| `README.md` | 사용 설명서 (이 파일) |
+
+---
+
 ## ⚠ 실행 전 필수 설치
 
 ### 1. Python
+
 **Python이 반드시 설치돼 있어야 합니다.**
 
 1. https://www.python.org/downloads/ 접속
@@ -16,18 +50,11 @@
 ChromeDriver는 실행 시 자동으로 설치됩니다.
 
 ### 3. 필수 패키지 설치 (최초 1회)
+
+터미널(명령 프롬프트)을 열고 아래 명령어를 입력하세요.
 ```
 pip install selenium webdriver-manager requests openpyxl
 ```
-
----
-
-## 📁 파일 구성
-
-| 파일 | 설명 |
-|------|------|
-| `download_chat.py` | 유튜브 라이브 채팅 다운로드 프로그램 |
-| `dedup.py` | CSV 중복 제거 유틸리티 |
 
 ---
 
