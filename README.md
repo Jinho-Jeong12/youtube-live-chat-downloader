@@ -49,12 +49,8 @@ https://github.com/Jinho-Jeong12/youtube-live-chat-downloader
 로그인이 필요한 영상(멤버십 등)을 수집할 경우 **Chrome 브라우저**가 설치되어 있어야 합니다.
 ChromeDriver는 실행 시 자동으로 설치됩니다.
 
-### 3. 필수 패키지 설치 (최초 1회)
-
-터미널(명령 프롬프트)을 열고 아래 명령어를 입력하세요.
-```
-pip install selenium webdriver-manager requests openpyxl
-```
+### 3. 필수 패키지
+별도로 설치할 필요 없습니다. 프로그램 실행 시 설치되지 않은 패키지가 있으면 **자동으로 설치**됩니다.
 
 ---
 

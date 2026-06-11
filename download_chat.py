@@ -6,6 +6,26 @@
 """
 
 import sys
+import subprocess
+
+def _install(packages: list[str]):
+    missing = []
+    for pkg in packages:
+        module = pkg.split("==")[0].replace("-", "_")
+        # webdriver_manager 예외 처리
+        if module == "webdriver_manager":
+            module = "webdriver_manager"
+        try:
+            __import__(module)
+        except ImportError:
+            missing.append(pkg)
+    if missing:
+        print(f"[자동 설치] 필요한 패키지를 설치합니다: {', '.join(missing)}")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", *missing])
+        print("[자동 설치] 완료.\n")
+
+_install(["selenium", "webdriver-manager", "requests", "openpyxl"])
+
 import csv
 import json
 import re
