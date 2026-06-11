@@ -1,0 +1,6 @@
+.claude/
+*_채팅전체.csv
+*_채팅전체_dedup.csv
+*_채팅.xlsx
+*_체크포인트.json
+_debug_initial.json
