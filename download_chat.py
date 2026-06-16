@@ -348,8 +348,36 @@ def _load_existing_csv(output_dir: Path, base_name: str) -> tuple[list[dict], se
     return messages, keys
 
 
-def fetch_all_chat(session: requests.Session, initial_data: dict, api_key: str, client_ver: str, video_id: str = "chat") -> list[dict]:
-    output_dir = Path(__file__).parent
+def select_output_dir() -> Path:
+    """GUI 폴더 선택 다이얼로그로 저장 위치를 선택. 실패 시 직접 입력."""
+    try:
+        import tkinter as tk
+        from tkinter import filedialog
+        root = tk.Tk()
+        root.withdraw()
+        root.attributes("-topmost", True)
+        folder = filedialog.askdirectory(
+            title="채팅 기록 저장 위치를 선택하세요",
+            initialdir=Path.home() / "Desktop",
+        )
+        root.destroy()
+        if folder:
+            return Path(folder)
+    except Exception as e:
+        print(f"폴더 선택 창을 열지 못했습니다: {e}")
+
+    print("저장할 폴더 경로를 직접 입력하세요 (비워두면 스크립트 폴더에 저장):")
+    path_input = input("경로: ").strip()
+    if path_input:
+        p = Path(path_input)
+        p.mkdir(parents=True, exist_ok=True)
+        return p
+    return Path(__file__).parent
+
+
+def fetch_all_chat(session: requests.Session, initial_data: dict, api_key: str, client_ver: str, video_id: str = "chat", output_dir: Path | None = None) -> list[dict]:
+    if output_dir is None:
+        output_dir = Path(__file__).parent
     cp_path = _checkpoint_path(output_dir, video_id)
 
     existing_messages: list[dict] = []
@@ -523,6 +551,10 @@ def main():
 
     video_id = extract_video_id(url)
 
+    print("\n채팅 기록을 저장할 폴더를 선택해주세요.")
+    output_dir = select_output_dir()
+    print(f"저장 위치: {output_dir}\n")
+
     ans = input("구글 로그인이 있어야 접근 가능한 영상인가요? (멤버십 등) [y/n]: ").strip().lower()
     need_login = ans == "y"
 
@@ -531,14 +563,14 @@ def main():
             session, initial_data, api_key, client_ver = make_session_via_chrome(video_id)
         else:
             session, initial_data, api_key, client_ver = make_session_without_login(video_id)
-        messages = fetch_all_chat(session, initial_data, api_key, client_ver, video_id)
+        messages = fetch_all_chat(session, initial_data, api_key, client_ver, video_id, output_dir)
     except Exception as e:
         print(f"\n[오류] {e}")
         input("\n엔터를 누르면 창이 닫힙니다.")
         sys.exit(1)
 
-    save_results(messages, Path(__file__).parent, video_id)
-    print("\n완료! 결과 파일이 스크립트와 같은 폴더에 저장되었습니다.")
+    save_results(messages, output_dir, video_id)
+    print(f"\n완료! 결과 파일이 저장되었습니다.\n저장 위치: {output_dir}")
     input("\n엔터를 누르면 창이 닫힙니다.")
 
 
