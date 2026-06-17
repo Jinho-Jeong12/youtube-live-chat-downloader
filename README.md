@@ -6,7 +6,7 @@
 
 ---
 
-## 📥 프로그램 다운로드 (GitHub에서 설치하기)
+## 프로그램 다운로드 (GitHub에서 설치하기)
 
 ### 1. GitHub 페이지 접속
 
@@ -39,7 +39,7 @@ https://github.com/Jinho-Jeong12/youtube-live-chat-downloader
 
 ---
 
-## ⚠ 실행 전 필수 설치
+## 실행 전 필수 설치
 
 ### 1. Python
 
@@ -58,7 +58,7 @@ ChromeDriver는 실행 시 자동으로 설치됩니다.
 
 ---
 
-## 🚀 사용법
+## 사용법
 
 ### 1. `download_chat.py` 실행
 ```
@@ -96,13 +96,13 @@ python download_chat.py
 
 ---
 
-## 🔁 중단 후 재개
+## 중단 후 재개
 
 수집 도중 중단해도 체크포인트가 자동 저장됩니다. 다시 실행하면 중단된 지점부터 재개됩니다.
 
 ---
 
-## 🧹 dedup.py — CSV 중복 제거
+## dedup.py — CSV 중복 제거
 
 `download_chat.py`로 수집한 CSV에서 닉네임+메시지+금액 기준으로 중복 행을 제거합니다.
 
