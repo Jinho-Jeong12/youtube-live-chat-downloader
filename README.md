@@ -72,7 +72,7 @@ python download_chat.py
 ### 1. `download_chat.py` 실행
 1. `download_chat.py` 파일을 **우클릭**합니다.
 2. "다음으로 열기" → "IDLE" 을 선택합니다.
-3. IDLE 창이 열리면 상단 메뉴에서 **Run → Run Module** 을 클릭합니다. (단축키: F5)
+3. IDLE 창이 열리면 상단 메뉴에서 **실행(Run) → 모듈 실행(Run Module)** 을 클릭합니다. (단축키: F5)
 
 ---
 
