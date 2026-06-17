@@ -90,10 +90,11 @@ def make_session_via_chrome(video_id: str) -> tuple[requests.Session, str]:
 
     print("\n" + "="*50, flush=True)
     print("잠시 후 Chrome 창이 자동으로 열립니다.", flush=True)
-    print("Chrome 창에서 YouTube에 로그인해주세요.", flush=True)
+    print("Chrome 창에서 YouTube에 로그인한 뒤,", flush=True)
+    print("이 터미널 창으로 돌아와 엔터를 눌러주세요.", flush=True)
     print("="*50, flush=True)
-    while input("준비되셨으면 ok 입력: ").strip().lower() != "ok":
-        pass
+    while input("이해하셨으면 ok 입력: ").strip().lower() != "ok":
+        print("ok를 입력해주세요.", flush=True)
 
     print("ChromeDriver 설치 확인 중...", flush=True)
     driver_path = ChromeDriverManager().install()
@@ -117,10 +118,9 @@ def make_session_via_chrome(video_id: str) -> tuple[requests.Session, str]:
         driver.get("https://www.youtube.com")
         print("\n" + "="*50, flush=True)
         print("Chrome 창에서 YouTube에 로그인해주세요.", flush=True)
-        print("로그인 완료 후 이 터미널 창으로 돌아와 ok를 입력해주세요.", flush=True)
+        print("로그인 완료 후 이 터미널 창으로 돌아와 엔터를 눌러주세요.", flush=True)
         print("="*50, flush=True)
-        while input("로그인 완료 후 ok 입력: ").strip().lower() != "ok":
-            print("로그인을 완료한 뒤 ok를 입력해주세요.", flush=True)
+        input("로그인 완료 후 엔터: ")
 
         print(f"\n페이지 로드 중: {url}", flush=True)
         driver.get(url)
