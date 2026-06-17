@@ -141,7 +141,7 @@ def make_session_via_chrome(video_id: str) -> tuple[requests.Session, str]:
         # 디버그: ytInitialData 저장
         debug_path = Path(__file__).parent / "_debug_initial.json"
         debug_path.write_text(json.dumps(initial_data, ensure_ascii=False, indent=2)[:100000], encoding="utf-8")
-        print(f"  [디버그] ytInitialData 저장: {debug_path}", flush=True)
+        print(f"  데이터 저장 위치: {debug_path}", flush=True)
 
         # API key 추출
         m2 = re.search(r'"INNERTUBE_API_KEY"\s*:\s*"([^"]+)"', page_source)
@@ -425,7 +425,7 @@ def fetch_all_chat(session: requests.Session, initial_data: dict, api_key: str, 
     while continuation:
         page += 1
         if continuation in seen_tokens:
-            print(f"  토큰 중복 감지 — 수집 완료로 판단하고 종료합니다.", flush=True)
+            print(f"  채팅 전수 수집 완료.", flush=True)
             break
         seen_tokens.add(continuation)
         data = fetch_chat_page(session, continuation, api_key, client_ver)
