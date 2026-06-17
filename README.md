@@ -58,12 +58,25 @@ ChromeDriver는 실행 시 자동으로 설치됩니다.
 
 ---
 
-## 사용법
+## 실행 방법 (Windows)
 
 ### 1. `download_chat.py` 실행
 ```
 python download_chat.py
 ```
+
+---
+
+## 실행 방법 (macOS)
+
+### 1. `download_chat.py` 실행
+1. `download_chat.py` 파일을 **우클릭**합니다.
+2. "다음으로 열기" → "IDLE" 을 선택합니다.
+3. IDLE 창이 열리면 상단 메뉴에서 **Run → Run Module** 을 클릭합니다. (단축키: F5)
+
+---
+
+## 공통 사용법
 
 ### 2. URL 입력
 - 유튜브 영상 URL을 붙여넣고 엔터
